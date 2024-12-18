@@ -1,0 +1,26 @@
+# Ignoruj pliki środowiska wirtualnego
+.venv/
+hubvenv/
+
+# Ignoruj pliki Pythonowe
+*.pyc
+__pycache__/
+
+# Ignoruj pliki bazy danych SQLite
+api/db.sqlite3
+*.sqlite3-journal
+
+# Ignoruj lokalne ustawienia
+api/api/local_settings.py
+
+# Ignoruj migracje Django (jeśli nie chcesz ich przechowywać w repozytorium)
+api/hub/migrations/
+api/api/migrations/
+
+# Ignoruj pliki logów
+*.log
+
+# Ignoruj foldery środowiska IDE
+.idea/
+.vscode/
+*.swp
