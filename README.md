@@ -1,4 +1,4 @@
-# Projekt LupoHub
+# Projekt Lupo Hub
 
 ## Instalacja
 
@@ -15,6 +15,7 @@ pip install -r requirements.txt
 ```
 
 ### Krok 3: local_settings.py
+Zmienić **local_settings_example.py** na **local_settings.py** i wprowadzić poprawne dane.
 
 ### Krok 4: Django
 ```sh

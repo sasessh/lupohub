@@ -7,15 +7,15 @@ hubvenv/
 __pycache__/
 
 # Ignoruj pliki bazy danych SQLite
-api/db.sqlite3
+django_app/db.sqlite3
 *.sqlite3-journal
 
 # Ignoruj lokalne ustawienia
-api/api/local_settings.py
+django_app/django_app/local_settings.py
 
 # Ignoruj migracje Django (jeśli nie chcesz ich przechowywać w repozytorium)
-api/hub/migrations/
-api/api/migrations/
+django_app/hub/migrations/
+django_app/django_app/migrations/
 
 # Ignoruj pliki logów
 *.log
