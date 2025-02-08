@@ -2,18 +2,24 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
-# Próba zaimportowania lokalnych ustawień
 try:
     from .local_settings import *
 except ImportError:
     pass
 
-# Podstawowe ustawienia
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'your-secret-key')
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'your-secret-key') # TODO: zmiana klucza
 
-# Zainstalowane aplikacje
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'localhost:4200', '192.168.1.2']
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:4200',
+    'http://127.0.0.1:4200',
+    'http://192.168.1.2:4200',
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -26,9 +32,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
+    'corsheaders',
 ]
 
-# Django REST Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -36,7 +42,6 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
-# drf-spectacular
 SPECTACULAR_SETTINGS = {
     'TITLE': 'API Documentation',
     'DESCRIPTION': 'Documentation for Lupo Hub API',
@@ -55,9 +60,8 @@ SPECTACULAR_SETTINGS = {
     },
 }
 
-# Django Simple JWT
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=500), # TODO: zmiana na 5 minut
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1), #TODO: zmiana czasu życia tokena
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
@@ -72,7 +76,6 @@ SIMPLE_JWT = {
     'JTI_CLAIM': 'jti',
 }
 
-# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -81,12 +84,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
-# URL konfiguracja
 ROOT_URLCONF = 'django_app.urls'
 
-# Szablony
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -103,18 +105,8 @@ TEMPLATES = [
     },
 ]
 
-# WSGI aplikacja
 WSGI_APPLICATION = 'django_app.wsgi.application'
 
-# Baza danych
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-# Walidacja haseł
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -130,21 +122,22 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Międzynarodowość
 LANGUAGE_CODE = 'pl-pl'
 TIME_ZONE = 'Europe/Warsaw'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# Pliki statyczne
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# Domyślny typ klucza głównego
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Dodaj backendy uwierzytelniania LDAP
 AUTHENTICATION_BACKENDS = [
     'django_auth_ldap.backend.LDAPBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
+
+AUTH_USER_MODEL = 'hub.CustomUser'
+
+DEBUG = True

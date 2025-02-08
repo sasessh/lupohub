@@ -28,3 +28,14 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger('django_auth_ldap')
 logger.addHandler(logging.StreamHandler())
 
+# Baza danych
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mydatabase',
+        'USER': 'myuser',
+        'PASSWORD': 'mypassword',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}

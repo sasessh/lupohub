@@ -3,3 +3,4 @@ djangorestframework
 drf-spectacular
 django-auth-ldap
 djangorestframework-simplejwt
+django-cors-headers

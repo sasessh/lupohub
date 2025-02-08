@@ -1,6 +1,6 @@
 # Ignoruj pliki środowiska wirtualnego
 .venv/
-hubvenv/
+venv/
 
 # Ignoruj pliki Pythonowe
 *.pyc
@@ -16,6 +16,7 @@ django_app/django_app/local_settings.py
 # Ignoruj migracje Django (jeśli nie chcesz ich przechowywać w repozytorium)
 django_app/hub/migrations/
 django_app/django_app/migrations/
+django_app/static/
 
 # Ignoruj pliki logów
 *.log
