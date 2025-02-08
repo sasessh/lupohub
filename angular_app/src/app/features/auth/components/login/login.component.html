@@ -1,0 +1,55 @@
+<!-- <div class="login-background"></div> -->
+<div class="login-container">
+  <!-- <img src="assets/logo_300.png" alt="logo"  /> -->
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <mat-card class="login-card">
+      <mat-form-field>
+        <mat-label>Login</mat-label>
+        <input
+          matInput
+          type="text"
+          id="username"
+          name="username"
+          ngModel
+          #username="ngModel"
+          required
+          minlength="4"
+        />
+        @if (username.touched && !username.valid) {
+        <mat-error>Login musi mieć co najmniej <strong>4 znaki</strong></mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Hasło</mat-label>
+        <input
+          matInput
+          id="password"
+          name="password"
+          [type]="hide() ? 'password' : 'text'"
+          ngModel
+          #password="ngModel"
+          required
+          minlength="6"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Pokaż hasło'"
+          [attr.aria-pressed]="hide()"
+        >
+          <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        @if (password.touched && !password.valid) {
+        <mat-error>Hasło musi mieć co najmniej <strong>6 znaków</strong></mat-error>
+        }
+      </mat-form-field>
+
+      <div style="height: 5px"></div>
+
+      <button mat-flat-button type="submit">Zaloguj</button>
+    </mat-card>
+  </form>
+</div>

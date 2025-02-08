@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+    <img src="logo_60.png" alt="Logo Firmy Lüttgens" class="logo">
+    <span class="spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>Profil</button>
+        <button mat-menu-item (click)="logout()">Wyloguj</button>
+    </mat-menu>
+</mat-toolbar>

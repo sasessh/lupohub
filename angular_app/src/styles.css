@@ -1,0 +1,19 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* MatSnackBar */
+.mat-mdc-snack-bar-container {
+  --mat-snack-bar-button-color: #fff;
+  --mdc-snackbar-container-color: #004080;
+  --mdc-snackbar-supporting-text-color: #fff;
+}
+
+.mat-mdc-snack-bar-container.snackbar-warning {
+  --mdc-snackbar-container-color: #aa0000;
+}

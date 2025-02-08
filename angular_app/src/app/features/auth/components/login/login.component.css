@@ -1,0 +1,30 @@
+.login-background {
+  position: fixed;
+  top: 25%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  transform: translate(0, -50%);
+  background: url('/assets/logo_300.png') no-repeat center center;
+  background-size: contain;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-card {
+  width: 330px;
+  padding: 2rem;
+  text-align: center;
+}
+
+mat-form-field {
+  display: block;
+  margin-bottom: 6px;
+}
